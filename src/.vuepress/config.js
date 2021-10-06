@@ -21,6 +21,7 @@ function getSideBar(folder, title) {
 
 module.exports = {
     title: 'TARDIS Wiki',
+    base: "/tardis-wiki/",
     description,
     
     head: [
