@@ -1,0 +1,19 @@
+{
+  "name": "tardis-wiki",
+  "version": "0.0.1",
+  "description": "Wiki for Tardis @ Edinburgh Uni",
+  "main": "index.js",
+  "authors": {
+    "name": "tcmal",
+    "email": "oscar.shrimpton.personal@gmail.com"
+  },
+  "repository": "",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}
