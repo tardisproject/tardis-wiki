@@ -1,0 +1,1 @@
+This CT hosts the [Shout](Shout "wikilink") Web IRC client

@@ -1,4 +1,23 @@
 const { description } = require('../../package')
+const fs = require('fs');
+const path = require('path');
+
+function getSideBar(folder, title) {
+    const extension = [".md"];
+
+    const files = fs
+        .readdirSync(path.join(`${__dirname}/../${folder}`))
+        .filter(
+        (item) =>
+            item.toLowerCase() != "readme.md" &&
+            fs.statSync(path.join(`${__dirname}/../${folder}`, item)).isFile() &&
+            extension.includes(path.extname(item))
+        )
+        .map(x => [x, x.replace('.md', '')]);
+
+    return [{ title: title, children: ["", ...files] }];
+}
+
 
 module.exports = {
     title: 'TARDIS Wiki',
@@ -24,30 +43,13 @@ module.exports = {
         lastUpdated: true,
         nav: [
             {
-                text: 'Guide',
-                link: '/guide/',
-            },
-            {
-                text: 'Config',
-                link: '/config/'
-            },
-            {
-                text: 'VuePress',
-                link: 'https://v1.vuepress.vuejs.org'
+                text: 'Archive',
+                link: '/archive/',
             }
         ],
         sidebar: {
-            '/guide/': [
-                {
-                    title: 'Guide',
-                    collapsable: false,
-                    children: [
-                        '',
-                        'using-vue',
-                    ]
-                }
-            ],
-        }
+            '/archive/': getSideBar('archive', 'Archive')
+        },
     },
     
     /**
