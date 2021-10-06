@@ -1,7 +1,4 @@
----
-home: true
-tagline: Wiki for Tardis @ Edinburgh Uni
----
+# TARDIS
 
 The Tardis Project is a computing facility, run and maintained by students (and staff!) of The University of Edinburgh. It was one of the first such projects of its kind, founded in 1988 by the School of Informatics (previously Department of Computer Science).
 

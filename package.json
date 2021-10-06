@@ -7,7 +7,7 @@
     "name": "tcmal",
     "email": "oscar.shrimpton.personal@gmail.com"
   },
-  "repository": "",
+  "repository": "https://github.com/compsoc-edinburgh/tardis-wiki",
   "scripts": {
     "dev": "vuepress dev src",
     "build": "vuepress build src"

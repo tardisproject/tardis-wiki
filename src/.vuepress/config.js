@@ -1,4 +1,4 @@
-const { description } = require('../../package')
+const { description, repository } = require('../../package')
 const fs = require('fs');
 const path = require('path');
 
@@ -13,15 +13,15 @@ function getSideBar(folder, title) {
             fs.statSync(path.join(`${__dirname}/../${folder}`, item)).isFile() &&
             extension.includes(path.extname(item))
         )
-        .map(x => [x, x.replace('.md', '')]);
-
-    return [{ title: title, children: ["", ...files] }];
+        .map(x => ['/' + folder + x, x.replace('.md', '')]);
+    
+    return [{ title: title, children: [...files] }];
 }
 
 
 module.exports = {
     title: 'TARDIS Wiki',
-    description: description,
+    description,
     
     head: [
         ['meta', { name: 'theme-color', content: '#0000d6' }],
@@ -35,7 +35,7 @@ module.exports = {
     * ref - https://v1.vuepress.vuejs.org/theme/default-theme-config.html
     */
     themeConfig: {
-        repo: '',
+        repository,
         logo: '/assets/logo.png',
         editLinks: false,
         docsDir: '',
@@ -43,12 +43,17 @@ module.exports = {
         lastUpdated: true,
         nav: [
             {
+                text: 'Wiki',
+                link: '/wiki/',
+            },
+            {
                 text: 'Archive',
                 link: '/archive/',
-            }
+            },
         ],
         sidebar: {
-            '/archive/': getSideBar('archive', 'Archive')
+            '/archive/': getSideBar('archive/', 'Archive'),
+            '/wiki': [...getSideBar('wiki/meta/', 'Meta'), ...getSideBar('wiki/services/', 'Services'), ...getSideBar('wiki/systems/', 'Systems')],
         },
     },
     
