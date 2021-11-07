@@ -38,3 +38,38 @@ externalEmail: john.doe@acme.inc
 homePhone: 091231021
 homePostalAddress: 20 George Square, Edinburgh
 ```
+
+## Usertools
+
+The [TARDIS usertools](https://github.com/tardisproject/usertools) are some python scripts we use for common tasks.
+These are only really for admins, but are documented here anyways
+
+### `tardis adduser <username>`
+
+1. Creates the user (interactively)
+2. Add a home directory mapping
+3. Email them with their password
+
+### `tardis userinfo`
+
+Gets user information
+
+`-u` searches by username.
+`-r` by real name (`cn` in LDAP).
+`-i` by numeric uid.
+
+### `tardis lastlog`
+
+Audits last user logins / password hash types (both by default).
+
+Abandonment shows the year that they last logged in (using `lastlog`, so should be done on the ssh gateway)
+
+Password shows the hash type (hopefully not plain).
+
+### `tardis disable-inactive threshold`
+
+Disable users that haven't logged in before or on the threshold year given by moving them to the `DisabledUsers` organisational unit.
+
+If `-n` is specified, users who have never logged in, or for whom lastlog didn't return a valid result, are also disabled.
+
+Will list accounts to be disabled and prompt for confirmation
